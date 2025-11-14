@@ -13,6 +13,7 @@
 // this think is not iife
 
 (function chai(){
+    // named iife
     console.log("DB CONNECTED"); 
 })();
 // ==>> this is iife and one more point you have to put seicolon at the end of iife function because it does not know ki context rok na kaha pe hai
