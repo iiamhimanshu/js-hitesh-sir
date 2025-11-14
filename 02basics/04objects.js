@@ -62,12 +62,32 @@ const user = [
 // ==> this works
 
 
-console.log(tinderUser);
-console.log(Object.keys(tinderUser))
+// console.log(tinderUser);
+// console.log(Object.keys(tinderUser))
 // ==> this returns the output in array iss se hume bohot help hoti hai
 //      we can traverse easily and can access data easily
 
-console.log(Object.values(tinderUser));
-console.log(Object.entries(tinderUser));
+// console.log(Object.values(tinderUser));
+// console.log(Object.entries(tinderUser));
 
+// console.log(Object.hasOwnProperty("abc"))
+// ==> Determines whether an object has a property with the specified name
+
+
+// ------------------------- object destructor ----------------------------
+
+const course = {
+    courseName : "js in hindi",
+    price : 999,
+    courseInstructor : "hitesh"
+}
+
+// console.log(course.courseInstructor);
+
+// const {courseInstructor} = course
+
+// console.log(courseInstructor);
+ 
+const {courseInstructor : instructor} = course
+console.log(instructor);
 
