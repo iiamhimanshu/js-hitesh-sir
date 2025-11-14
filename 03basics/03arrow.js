@@ -60,6 +60,6 @@ const multiTwo = (num1,num2) => (num1*num2)
 
 const obj = (a,b) => ({username : "himanshu"})
 // console.log(obj(1,2));
-/* jab object return karana hotoh paranthesis use kare ge in case of singal line /*
+/* jab object return karana hotoh paranthesis use kare ge in case of singal line */
 
 
