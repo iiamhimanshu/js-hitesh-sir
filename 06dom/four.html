@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code | DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(lang){
+        const li = document.createElement('li');
+        li.innerHTML = `${lang}`;
+        document.querySelector(".language").appendChild(li);
+    }
+
+    // ==> ye jo function hum ne likha hai it is not an optimized way of writing kyuki har baar insert kar ne loiye uss ko pura travel kar ke jaana padhe ga till the end , hence time jada lage ga
+
+    addLanguage("python")
+    addLanguage("typescript")
+
+    function addOptiLanguage(langName){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li);
+    }
+
+    addOptiLanguage("Rust");
+
+    // EDIT value
+
+    const secLang = document.querySelector("li:nth-child(2)");
+    // secLang.innerHTML = "Mojo";
+    // ==> phir wohi baat ho gayi hai hum ye use nahi kare ge kyuki ki optimized nahi hai;
+    
+    // iss ki bajaye hum naya element banaye ge , uss mai textContent daal ke secondelement se replace kar denge
+
+    const newLi = document.createElement('li');
+    newLi.textContent = "Mojo";
+    secLang.replaceWith(newLi);
+
+</script>
+</html>
