@@ -28,29 +28,48 @@ function validGuess(guessNo){
     // here we are going to validate the guess
     if(isNaN(guessNo)){
         displayMsg(`Please enter a valid number`);
+        guess.value = '';
     }else if(guessNo < 1){
-        displayMsg(`Number is less than 1`)
+        displayMsg(`Please enter a number greater than 1`)
     }else if(guessNo > 100){
-        displayMsg(`Number is greater than 100`)
+        displayMsg(`Please enter a number less than 100`)
     }else{
-        checkGuess(guessNo);
         prevGuessArr.push(guessNo);
+        if(numGuess === 11){
+            displayGuess(guessNo);
+            displayMsg(`Game Over, Random no. was ${randomNo}`);
+            stopGame();
+        }else{
+            displayGuess(guessNo);
+            checkGuess(guessNo);
+        }
     }
-
 }
 
 function checkGuess(guessNo){
     // here we are going to check the guess with that random no.
-
+    if(guessNo < randomNo){
+        displayMsg(`Number is too low`);
+    }else if(guessNo > randomNo){
+        displayMsg('Number is too high')
+    }else{
+        displayMsg('Congratulations, you guessed it right.');
+        stopGame();
+    }
 }
 
 function displayGuess(guessNo){
-    // here we are going to display the guess in the prev guess array and also going to reset the guess and also going to update the remaing guesses count
+    // here we are going to display the guess in the prev guess array and also going to reset the guess and also going to update the remaning guesses count
 
+    guess.value = '';
+    prevGuess.innerHTML += `${guessNo} , `;
+    numGuess++;
+    remGuess.innerHTML = `${11 - numGuess}`;
 }
 
 function displayMsg(message){
     // here we are going to display the message incase of various secenarios , such as when the no. is valid or not
+    msgDisplay.innerHTML = `<h2>${message}</h2>`
 }
 
 function stopGame(){
