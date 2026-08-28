@@ -35,6 +35,7 @@ function validGuess(guessNo){
         displayMsg(`Please enter a number less than 100`)
     }else{
         prevGuessArr.push(guessNo);
+        numGuess++;
         if(numGuess === 11){
             displayGuess(guessNo);
             displayMsg(`Game Over, Random no. was ${randomNo}`);
@@ -63,7 +64,8 @@ function displayGuess(guessNo){
 
     guess.value = '';
     prevGuess.innerHTML += `${guessNo} , `;
-    numGuess++;
+    // numGuess++;
+    console.log(numGuess);
     remGuess.innerHTML = `${11 - numGuess}`;
 }
 
@@ -74,10 +76,27 @@ function displayMsg(message){
 
 function stopGame(){
     // this function run when we have guessed the no. right or when we have or we have exauste the no. of lifeline given to us
-
+    guess.value = '';
+    guess.setAttribute("disabled","");
+    p.classList.add("button");
+    p.innerHTML = `<h2 id = newGame>Start new Game</h2>`;
+    startOver.appendChild(p);
+    playGame = false;
+    startGame();
 }
 
 function startGame(){
     // this function run when we have to restart the game 
+    const startGameBtn = document.querySelector(".button");
+    startGameBtn.addEventListener("click" , function(){
+        guess.value = "";
+        randomNo = parseInt(Math.random()*100 + 1);
+        prevGuess.innerHTML = "";
+        numGuess = 1;
+        remGuess.innerHTML = `${11 - numGuess}`;
+        guess.removeAttribute("disabled");
+        startOver.removeChild(p);
+        playGame = true;
+    })
 }
 
