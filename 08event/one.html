@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // document.querySelector("#owl").onclick = function(){
+    //     alert("owl");
+    // }
+
+    // we should use eventListeners instead of onclick , as they give us more information as well as they give us ability of propogation
+
+    // ==> addEventListener mai ek teesra parameter bhi hota hai true ya false , false by default hi rehta hai
+
+    // iss ke alawa 2 or methods hote hai 
+    
+    // attachEvent 
+    // jQuery - on()
+
+    
+    // type , timestamp , defaultPrevented
+    // target , toElement , srcElement , currentTarget
+    // clientX , clientY , screenX , screenY 
+    // altkey , ctrlkey , shiftkey , keycode
+
+    // eventbubbling and event capturing
+
+    // document.getElementById("images").addEventListener("click",function(e){
+    //     console.log("Clicked on ul");
+    // },false)
+
+    // document.getElementById("owl").addEventListener("click",function(e){
+    //     console.log("clicked on owl");
+    //     e.stopPropagation();
+    //     // iss se bubbling nahi hoti hai
+    // },false)
+
+    // event propogation mai bubbling ==> bubbling mai neeche se upar jaata hai ==> phele image->li->ui
+    // aur aisa jab hota hai jab hum false use karte hai , agar hum true use kare toh capturing hoti hai upar se neeche jaata hai
+
+    // now we will try to do activity here if click on any image that image will be removed
+
+    document.getElementById("images").addEventListener("click",function(e){
+        // console.log(e.target);
+        // console.log(e.target.parentNode);
+        // console.log(e.target.tagName)
+        if(e.target.tagName === "IMG"){
+            const removeIt = e.target.parentNode;
+            removeIt.remove();
+        }
+        // hume sirf image hatani hai , agar hum li par click karne yeni ki bullet pe toh sub hat jaata hai kyuki uska parentNode ul hai , to overcome this we have perform some checks
+
+        // ==> alternative method
+        // removeIt.parentNode.removeChild(removeIt)
+    },false)
+
+</script>
+</html>
